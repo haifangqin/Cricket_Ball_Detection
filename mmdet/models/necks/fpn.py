@@ -87,6 +87,7 @@ class FPN(BaseModule):
 
         if end_level == -1 or end_level == self.num_ins - 1:
             self.backbone_end_level = self.num_ins
+            #print('num_outs', num_outs, self.num_ins, start_level)
             assert num_outs >= self.num_ins - start_level
         else:
             # if end_level is not the last level, no extra level is allowed
@@ -151,6 +152,7 @@ class FPN(BaseModule):
     @auto_fp16()
     def forward(self, inputs):
         """Forward function."""
+        #print(len(inputs), len(self.in_channels))
         assert len(inputs) == len(self.in_channels)
 
         # build laterals

@@ -476,6 +476,7 @@ class AnchorHead(BaseDenseHead, BBoxTestMixin):
             dict[str, Tensor]: A dictionary of loss components.
         """
         featmap_sizes = [featmap.size()[-2:] for featmap in cls_scores]
+        #print('self.prior_generator.num_levels', len(featmap_sizes), self.prior_generator.num_levels)
         assert len(featmap_sizes) == self.prior_generator.num_levels
 
         device = cls_scores[0].device
